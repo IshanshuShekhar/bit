@@ -1,0 +1,96 @@
+@import './styles/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #F5F5EF;
+    color: #344653;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #E8ECE5;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #718C9B;
+    border-radius: 9999px;
+  }
+
+  /* 2. Buttons: Add smooth transition and tactile feedback */
+  button, 
+  a[class*="bg-[#"], 
+  a[class*="bg-white/10"],
+  .btn {
+    transition: all 0.2s ease !important;
+  }
+  button:active, 
+  a[class*="bg-[#"]:active, 
+  a[class*="bg-white/10"]:active,
+  .btn:active {
+    transform: scale(0.98) !important;
+  }
+
+  /* 3. Page headings: uppercase letter-spacing, bolder H1 */
+  h1 {
+    font-weight: 800 !important;
+  }
+  .uppercase {
+    letter-spacing: 0.075em !important;
+  }
+}
+
+@layer components {
+  /* 1. Cards: increase border-radius, soft box-shadow, hover effect */
+  /* Target elements that look like cards based on background color or shadow classes */
+  div[class*="bg-[#EEF1EB]"], div[class*="bg-white"][class*="shadow"] {
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease !important;
+  }
+  
+  div[class*="bg-[#EEF1EB]"]:hover, div[class*="bg-white"][class*="shadow"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Exclude certain non-card small items from the generic hover to be safe */
+  .p-2, .w-12 {
+    transform: none !important;
+  }
+
+  /* 4. Spacing: increase the gap between major sections/cards */
+  .gap-6 { gap: 2rem !important; }
+  .gap-8 { gap: 2.5rem !important; }
+  .gap-12 { gap: 3.5rem !important; }
+  
+  .mb-8 { margin-bottom: 2.5rem !important; }
+  .mb-12 { margin-bottom: 3.5rem !important; }
+
+  /* 5. Fade-in animation on pages/cards */
+  main, section, div[class*="bg-[#EEF1EB]"], div[class*="bg-white"][class*="shadow"] {
+    animation: fade-in-load 0.3s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  @keyframes fade-in-load {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
